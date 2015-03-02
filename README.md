@@ -7,10 +7,7 @@ To use this application follow these steps:
 
 1. mvn package
 2. edit database config in *conf/taxonify.yml*
-3. Run the server with
-````
-java -jar target/taxonifyapi-1.0-SNAPSHOT.jar server conf/taxonify.yml
-````
+3. Run the server with **java -jar target/taxonifyapi-1.0-SNAPSHOT.jar server conf/taxonify.yml**
 4. Point your browser to http://localhost:8282/api for the first 20 species
 5. Filter the data by passing on the parameter 'scientificName' in the URL
 
