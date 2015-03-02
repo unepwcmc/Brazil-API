@@ -19,6 +19,9 @@ public interface TaxonDAO {
     @SqlQuery("SELECT * FROM taxon WHERE UPPER(scientific_name) LIKE UPPER(:query) LIMIT 20")
     List<Taxon> findByScientificName(@Bind("query") String query);
 
-    @SqlQuery("SELECT * FROM taxon LIMIT 20")
+    @SqlQuery("SELECT taxon.*, string_agg(geo_entity.name, ', ') as distribution" +
+            " FROM taxon INNER JOIN distribution ON taxon.id = distribution.taxon_id" +
+            " INNER JOIN geo_entity ON geo_entity.id = distribution.geo_entity_id" +
+            " GROUP BY taxon.id LIMIT 20")
     List<Taxon> findAll();
 }

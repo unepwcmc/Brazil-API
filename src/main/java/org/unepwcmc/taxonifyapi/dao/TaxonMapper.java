@@ -12,6 +12,8 @@ import java.sql.SQLException;
 public class TaxonMapper implements ResultSetMapper<Taxon> {
 
     public Taxon map(int index, ResultSet r, StatementContext ctx) throws SQLException {
-        return new Taxon(r.getString("scientific_name"), r.getString("kingdom_name"));
+        return new Taxon(r.getString("kingdom_name"),
+                r.getString("phylum_name"), r.getString("class_name"), r.getString("order_name"),
+                r.getString("family_name"), r.getString("scientific_name"), r.getString("distribution"));
     }
 }
