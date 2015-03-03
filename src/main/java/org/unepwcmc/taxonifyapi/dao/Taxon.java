@@ -15,10 +15,12 @@ public class Taxon {
     private final String orderName;
     private final String familyName;
     private final String distribution;
+    private final Integer taxonId;
 
-    public Taxon(String kingdomName, String phylumName,
+    public Taxon(Integer taxonId, String kingdomName, String phylumName,
                  String className, String orderName, String familyName, String scientificName,
                  String distribution) {
+        this.taxonId = taxonId;
         this.kingdomName = kingdomName;
         this.phylumName = phylumName;
         this.className = className;
@@ -28,7 +30,7 @@ public class Taxon {
         this.distribution = distribution;
     }
 
-
+    public Integer getTaxonId() { return taxonId; }
     public String getScientificName() {
         return scientificName;
     }
