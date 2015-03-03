@@ -14,11 +14,16 @@ public class Taxon {
     private final String className;
     private final String orderName;
     private final String familyName;
-    private final Integer taxonId;
+    private final int taxonId;
+    private final int speciesPlusId;
+    private final int gbifId;
 
-    public Taxon(Integer taxonId, String kingdomName, String phylumName,
-                 String className, String orderName, String familyName, String scientificName ) {
+    public Taxon(int taxonId, String kingdomName, String phylumName,
+                 String className, String orderName, String familyName, String scientificName, 
+                 int speciesPlusId, int gbifId) {
         this.taxonId = taxonId;
+        this.speciesPlusId = speciesPlusId;
+        this.gbifId = gbifId;
         this.kingdomName = kingdomName;
         this.phylumName = phylumName;
         this.className = className;
@@ -27,7 +32,9 @@ public class Taxon {
         this.scientificName = scientificName;
     }
 
-    public Integer getTaxonId() { return taxonId; }
+    public int getTaxonId() { return taxonId; }
+    public int getSpeciesPlusId() { return speciesPlusId; }
+    public int getGbifId() { return gbifId; }
     public String getScientificName() {
         return scientificName;
     }
