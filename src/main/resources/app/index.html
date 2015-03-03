@@ -6,5 +6,99 @@
 </head>
 <body>
     <h1>Taxonify API</h1>
+
+    The following endpoints are available.
+
+    <h2>Search</h2>
+    <p><strong>Endpoint:</strong> <span class="url">/api/taxa?scientificName=&page=&perPage=</span></p>
+    <p><strong>Params:</strong></p>
+    <ul>
+        <li>scientificName: string</li>
+        <li>page: number</li>
+        <li>perPage: number</li>
+    </ul>
+    <p><strong>Returns:</strong></p>
+    <p>
+    [
+    meta: [
+    count: number
+    ],
+    rows:  [ {
+    kingdomName: string,
+    phylumName: string,
+    className: string,
+    orderName: string,
+    familyName: string,
+    genusName: string,
+    scientificName: string,
+    speciesId: number,
+    speciesPlusId: number,
+    gbifId: number,
+    commonNames: string
+    } ]
+    ]
+    </p>
+
+    <h2>Clicking Breadcrumbs</h2>
+    For clicking the breadcrumbs there are two options. We can start by using the above endpoint, and use the breadcrumb string as the scientificName;
+
+    <h2>View Species page</h2>
+    <h3>Species taxonomic data</h3>
+    <p><strong>Endpoint:</strong> <span class="url">/api/taxa/:speciesId</span></p>
+    <p><strong>Params:</strong></p>
+    <ul>
+        <li>speciesId: number</li>
+    </ul>
+    <p><strong>Returns:</strong></p>
+    <p>
+    {
+        kingdomName: string,
+        phylumName: string,
+        className: string,
+        orderName: string,
+        familyName: string,
+        genusName: string,
+        scientificName: string,
+        speciesId: number,
+        speciesPlusId: number,
+        gbifId: number,
+        citesListings: array
+    }
+    </p>
+    
+    <h3>Species common names</h3>
+
+    <p><strong>Endpoint:</strong> <span class="url">/api/common_names/:speciesId</span></p>
+    <p><strong>Params:</strong></p>
+    <ul>
+        <li>speciesId: number</li>
+    </ul>
+    <p><strong>Returns:</strong></p>
+    <p>
+    [
+    {
+    id: number,
+    name: string,
+    language: string,
+    regions: string
+    }
+    ]
+    </p>
+
+    <h3>Species distribution</h3>
+    <p><strong>Endpoint:</strong> <span class="url">/api/distribution/:speciesId</span></p>
+    <p><strong>Params:</strong></p>
+    <ul>
+        <li>speciesId: number</li>
+    </ul>
+    <p><strong>Returns:</strong></p>
+    <p>
+        [
+        {
+        id: number,
+        region: string,
+        }
+        ]
+    </p>
 </body>
 </html>
