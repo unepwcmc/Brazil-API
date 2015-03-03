@@ -11,9 +11,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-/**
- * Created by Simao on 03/03/15.
- */
 @Path("/taxa")
 @Produces(MediaType.APPLICATION_JSON)
 public class TaxaResource {

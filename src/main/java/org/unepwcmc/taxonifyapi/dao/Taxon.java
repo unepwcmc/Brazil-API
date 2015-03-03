@@ -2,9 +2,6 @@ package org.unepwcmc.taxonifyapi.dao;
 
 import javax.annotation.concurrent.Immutable;
 
-/**
- * Created by Simao on 02/03/15.
- */
 @Immutable
 public class Taxon {
 
