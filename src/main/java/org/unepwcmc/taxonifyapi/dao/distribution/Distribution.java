@@ -1,4 +1,4 @@
-package org.unepwcmc.taxonifyapi.dao;
+package org.unepwcmc.taxonifyapi.dao.distribution;
 
 import javax.annotation.concurrent.Immutable;
 

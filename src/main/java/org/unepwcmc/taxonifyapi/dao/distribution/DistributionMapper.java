@@ -1,4 +1,4 @@
-package org.unepwcmc.taxonifyapi.dao;
+package org.unepwcmc.taxonifyapi.dao.distribution;
 
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;

@@ -1,8 +1,8 @@
 package org.unepwcmc.taxonifyapi.resources;
 
 import io.dropwizard.jersey.params.LongParam;
-import org.unepwcmc.taxonifyapi.dao.CommonName;
-import org.unepwcmc.taxonifyapi.dao.CommonNamesDAO;
+import org.unepwcmc.taxonifyapi.dao.common_name.CommonName;
+import org.unepwcmc.taxonifyapi.dao.common_name.CommonNamesDAO;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

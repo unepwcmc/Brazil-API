@@ -1,10 +1,9 @@
-package org.unepwcmc.taxonifyapi.dao;
+package org.unepwcmc.taxonifyapi.dao.taxa;
 
 import javax.annotation.concurrent.Immutable;
 
 @Immutable
-public class Taxon {
-
+public class Taxa {
     private final String scientificName;
     private final String kingdomName;
     private final String phylumName;
@@ -14,11 +13,11 @@ public class Taxon {
     private final int speciesId;
     private final int speciesPlusId;
     private final int gbifId;
-    private final String citesListing;
+    private final String commonNames;
 
-    public Taxon(int speciesId, String kingdomName, String phylumName,
-                 String className, String orderName, String familyName, String scientificName, 
-                 int speciesPlusId, int gbifId, String citesListing) {
+    public Taxa(int speciesId, String kingdomName, String phylumName,
+                 String className, String orderName, String familyName, String scientificName,
+                 int speciesPlusId, int gbifId, String commonNames) {
         this.speciesId = speciesId;
         this.speciesPlusId = speciesPlusId;
         this.gbifId = gbifId;
@@ -28,7 +27,7 @@ public class Taxon {
         this.orderName = orderName;
         this.familyName = familyName;
         this.scientificName = scientificName;
-        this.citesListing = citesListing;
+        this.commonNames = commonNames;
     }
 
     public int getSpeciesId() { return speciesId; }
@@ -53,5 +52,5 @@ public class Taxon {
     public String getFamilyName() {
         return familyName;
     }
-    public String getCitesListing() { return citesListing; }
+    public String getCommonNames() { return commonNames; }
 }

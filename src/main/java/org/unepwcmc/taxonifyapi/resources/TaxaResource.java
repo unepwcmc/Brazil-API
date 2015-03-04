@@ -1,9 +1,9 @@
 package org.unepwcmc.taxonifyapi.resources;
 
 import com.google.common.base.Optional;
-import org.unepwcmc.taxonifyapi.dao.Taxa;
-import org.unepwcmc.taxonifyapi.dao.TaxaDAO;
-import org.unepwcmc.taxonifyapi.dao.TaxaSearchResponse;
+import org.unepwcmc.taxonifyapi.dao.taxa.Taxa;
+import org.unepwcmc.taxonifyapi.dao.taxa.TaxaDAO;
+import org.unepwcmc.taxonifyapi.dao.taxa.TaxaSearchResponse;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

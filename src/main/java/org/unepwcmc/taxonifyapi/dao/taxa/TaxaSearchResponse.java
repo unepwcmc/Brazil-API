@@ -1,4 +1,4 @@
-package org.unepwcmc.taxonifyapi.dao;
+package org.unepwcmc.taxonifyapi.dao.taxa;
 
 import java.util.List;
 
