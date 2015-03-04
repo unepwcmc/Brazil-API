@@ -6,7 +6,9 @@ import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
+import org.unepwcmc.taxonifyapi.dao.CommonNamesDAO;
 import org.unepwcmc.taxonifyapi.dao.TaxonDAO;
+import org.unepwcmc.taxonifyapi.resources.CommonNamesResource;
 import org.unepwcmc.taxonifyapi.resources.TaxaResource;
 import org.unepwcmc.taxonifyapi.resources.TaxonResource;
 
@@ -35,8 +37,10 @@ public class ApiApplication extends Application<ApiConfiguration> {
         final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, config.getDataSourceFactory(), "postgresql");
         final TaxonDAO dao = jdbi.onDemand(TaxonDAO.class);
+        final CommonNamesDAO commonNamesDAO = jdbi.onDemand(CommonNamesDAO.class);
 
         environment.jersey().register(new TaxonResource(dao));
         environment.jersey().register(new TaxaResource(dao));
+        environment.jersey().register(new CommonNamesResource(commonNamesDAO));
     }
 }

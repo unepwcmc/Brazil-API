@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by Simao on 02/03/15.
  */
-@Path("/taxa/{taxonId}")
+@Path("/taxa/{speciesId}")
 @Produces(MediaType.APPLICATION_JSON)
 public class TaxonResource {
     private final TaxonDAO dao;
@@ -22,12 +22,12 @@ public class TaxonResource {
     }
 
     @GET
-    public Taxon getTaxon(@PathParam("taxonId") LongParam taxonId) {
-        return findSafely(taxonId.get());
+    public Taxon getTaxon(@PathParam("speciesId") LongParam speciesId) {
+        return findSafely(speciesId.get());
     }
     
-    private Taxon findSafely(long taxonId) {
-        Taxon taxon = dao.findById(taxonId);
+    private Taxon findSafely(long speciesId) {
+        Taxon taxon = dao.findById(speciesId);
         return taxon;
     }
 }
