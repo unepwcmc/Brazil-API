@@ -9,7 +9,9 @@ database:
   password: postgres
 
   # the JDBC URL
-  url: jdbc:postgresql://localhost:5432/especies_development
+  url: jdbc:postgresql://localhost:5432/especies_production
+  # Development database below
+  # url: jdbc:postgresql://localhost:5432/especies_development
 
   # any properties specific to your JDBC driver:
   properties:
@@ -19,7 +21,7 @@ database:
   maxWaitForConnection: 1s
 
   # the SQL query to run when validating a connection's liveness
-  validationQuery: "/* MyService Health Check */ SELECT 1"
+  validationQuery: "/* MyService Health Check */ SELECT * FROM taxon LIMIT 1"
 
   # the minimum number of connections to keep open
   minSize: 8
@@ -35,7 +37,7 @@ database:
 
   # the minimum amount of time an connection must sit idle in the pool before it is eligible for eviction
   minIdleTime: 1 minute
-  
+
 server:
   applicationConnectors:
     - type: http
