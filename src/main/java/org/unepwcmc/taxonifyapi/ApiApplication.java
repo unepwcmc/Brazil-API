@@ -6,14 +6,12 @@ import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
+import org.unepwcmc.taxonifyapi.dao.autocomplete.AutocompleteDAO;
 import org.unepwcmc.taxonifyapi.dao.common_name.CommonNamesDAO;
 import org.unepwcmc.taxonifyapi.dao.distribution.DistributionDAO;
 import org.unepwcmc.taxonifyapi.dao.taxa.TaxaDAO;
 import org.unepwcmc.taxonifyapi.dao.taxon.TaxonDAO;
-import org.unepwcmc.taxonifyapi.resources.CommonNamesResource;
-import org.unepwcmc.taxonifyapi.resources.DistributionResource;
-import org.unepwcmc.taxonifyapi.resources.TaxaResource;
-import org.unepwcmc.taxonifyapi.resources.TaxonResource;
+import org.unepwcmc.taxonifyapi.resources.*;
 
 /**
  * Created by Simao on 02/03/15.
@@ -43,10 +41,12 @@ public class ApiApplication extends Application<ApiConfiguration> {
         final TaxaDAO taxaDao = jdbi.onDemand(TaxaDAO.class);
         final CommonNamesDAO commonNamesDAO = jdbi.onDemand(CommonNamesDAO.class);
         final DistributionDAO distributionDAO = jdbi.onDemand(DistributionDAO.class);
+        final AutocompleteDAO autocompleteDAO = jdbi.onDemand(AutocompleteDAO.class);
 
         environment.jersey().register(new TaxonResource(dao));
         environment.jersey().register(new TaxaResource(taxaDao));
         environment.jersey().register(new CommonNamesResource(commonNamesDAO));
         environment.jersey().register(new DistributionResource(distributionDAO));
+        environment.jersey().register(new AutocompleteResource(autocompleteDAO));
     }
 }

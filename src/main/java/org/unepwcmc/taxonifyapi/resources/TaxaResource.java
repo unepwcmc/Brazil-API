@@ -29,8 +29,10 @@ public class TaxaResource {
                               @QueryParam("perPage") Optional<Integer> perPage) {
         int myPage;
         int myPerPage;
-        if(!perPage.isPresent() || perPage.get() < 0 || perPage.get() > 400) {
+        if(!perPage.isPresent() || perPage.get() < 0) {
             myPerPage = 50;
+        } else if(perPage.get() > 400) {
+            myPerPage = 400;
         } else {
             myPerPage = perPage.get();
         }
