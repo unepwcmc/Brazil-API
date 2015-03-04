@@ -43,7 +43,8 @@ public class TaxaResource {
         int total;
         List<Taxa> species;
        if(scientificName.isPresent()) {
-           switch(rank.get().toLowerCase()) {
+           String myRank = rank.isPresent() ? rank.get().toLowerCase() : "";
+           switch(myRank) {
                case "kingdom":
                    species = dao.findByKingdomName(scientificName.get() + "%", myPage, myPerPage);
                    total = dao.countForKingdomName(scientificName.get()+"%");
