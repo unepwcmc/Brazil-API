@@ -1,6 +1,5 @@
 package org.unepwcmc.taxonifyapi.dao;
 
-import com.google.common.base.Optional;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
