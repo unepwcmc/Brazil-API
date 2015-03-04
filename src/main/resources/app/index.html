@@ -51,7 +51,45 @@
     <h1>Taxonify API</h1>
 
     The following endpoints are available.
+    
+    <h2>Autocomplete</h2>
+    <p><strong>Endpoint:</strong> <span class="url">/api/autocomplete?query=</span></p>
+    <p><strong>Params:</strong></p>
+    <ul>
+        <li>query: string</li>
+    </ul>
+    <p><strong>Returns:</strong></p>
+    <pre>
+        <code id="autoEndPoint">
+        </code>
+    </pre>
+    <script>
+        $(function() {
+            var autoEndPoint = [{
+                "speciesId": "number",
+                "scientificName": "string"
+            }];
+            $('#autoEndPoint').html(library.json.prettyPrint(autoEndPoint));
+        });
+    </script>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+        <code id="autoExample">
+        </code>
+    </pre>
+    <script>
+        $(function() {
+            var autoExample =
+            [{
+                "scientificName": "Abarema acreana",
+                "speciesId": 50040
+            }];
+            $('#autoExample').html(library.json.prettyPrint(autoExample));
+        });
+    </script>
 
+    <hr>
+    
     <h2>Search</h2>
     <p><strong>Endpoint:</strong> <span class="url">/api/taxa?scientificName=&page=&perPage=</span></p>
     <p><strong>Params:</strong></p>
