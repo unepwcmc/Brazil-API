@@ -1,9 +1,9 @@
 package org.unepwcmc.taxonifyapi.resources;
 
 import com.google.common.base.Optional;
+import org.unepwcmc.taxonifyapi.dao.Taxa;
+import org.unepwcmc.taxonifyapi.dao.TaxaDAO;
 import org.unepwcmc.taxonifyapi.dao.TaxaSearchResponse;
-import org.unepwcmc.taxonifyapi.dao.Taxon;
-import org.unepwcmc.taxonifyapi.dao.TaxonDAO;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,9 +15,9 @@ import java.util.List;
 @Path("/taxa")
 @Produces(MediaType.APPLICATION_JSON)
 public class TaxaResource {
-    private final TaxonDAO dao;
+    private final TaxaDAO dao;
 
-    public TaxaResource(TaxonDAO dao) {
+    public TaxaResource(TaxaDAO dao) {
         this.dao = dao;
     }
 
@@ -41,7 +41,7 @@ public class TaxaResource {
         }
         
         int total;
-        List<Taxon> species;
+        List<Taxa> species;
        if(scientificName.isPresent()) {
            switch(rank.get().toLowerCase()) {
                case "kingdom":

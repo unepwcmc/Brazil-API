@@ -8,9 +8,9 @@ import java.util.List;
 public class TaxaSearchResponse {
     
     public final int total;
-    public final List<Taxon> species;
+    public final List<Taxa> species;
     
-    public TaxaSearchResponse(int total, List<Taxon> species) {
+    public TaxaSearchResponse(int total, List<Taxa> species) {
         this.total = total;
         this.species = species;
     }
@@ -19,7 +19,7 @@ public class TaxaSearchResponse {
         return total;
     }
     
-    public List<Taxon> getSpecies() {
+    public List<Taxa> getSpecies() {
         return species;
     }
 }
