@@ -3,6 +3,49 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Taxonify API</title>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+        if (!library)
+            var library = {};
+
+        library.json = {
+            replacer: function(match, pIndent, pKey, pVal, pEnd) {
+                var key = '<span class=json-key>';
+                var val = '<span class=json-value>';
+                var str = '<span class=json-string>';
+                var r = pIndent || '';
+                if (pKey)
+                    r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+                if (pVal)
+                    r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+                return r + (pEnd || '');
+            },
+            prettyPrint: function(obj) {
+                var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+                return JSON.stringify(obj, null, 3)
+                        .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+                        .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                        .replace(jsonLine, library.json.replacer);
+            }
+        };
+    </script>
+    <style>
+        pre {
+            background-color: ghostwhite;
+            border: 1px solid silver;
+            padding: 10px 20px;
+            margin: 20px;
+        }
+        .json-key {
+            color: brown;
+        }
+        .json-value {
+            color: navy;
+        }
+        .json-string {
+            color: olive;
+        }
+    </style>
 </head>
 <body>
     <h1>Taxonify API</h1>
@@ -19,26 +62,31 @@
         <li>rank: string</li>
     </ul>
     <p><strong>Returns:</strong></p>
-    <p>
-    [
-    total: number
-    ,
-    species:  [ {
-    kingdomName: string,
-    phylumName: string,
-    className: string,
-    orderName: string,
-    familyName: string,
-    genusName: string,
-    scientificName: string,
-    speciesId: number,
-    speciesPlusId: number,
-    gbifId: number,
-    commonNames: string
-    } ]
-    ]
-    </p>
-
+    <pre>
+        <code id="searchEndPoint">
+        </code>
+    </pre>
+    <script>
+        $(function() {
+            var searchEndPoint = [{
+                "total": "number",
+                "species":  [ {
+                    "kingdomName": "string",
+                    "phylumName": "string",
+                    "className": "string",
+                    "orderName": "string",
+                    "familyName": "string",
+                    "genusName": "string",
+                    "scientificName": "string",
+                    "speciesId": "number",
+                    "speciesPlusId": "number",
+                    "gbifId": "number",
+                    "commonNames": "string"
+                    } ]
+                }];
+            $('#searchEndPoint').html(library.json.prettyPrint(searchEndPoint));
+        });
+    </script>
     <h2>View Species page</h2>
     <h3>Species taxonomic data</h3>
     <p><strong>Endpoint:</strong> <span class="url">/api/taxa/:speciesId</span></p>
@@ -47,22 +95,29 @@
         <li>speciesId: number</li>
     </ul>
     <p><strong>Returns:</strong></p>
-    <p>
-    {
-        kingdomName: string,
-        phylumName: string,
-        className: string,
-        orderName: string,
-        familyName: string,
-        genusName: string,
-        scientificName: string,
-        speciesId: number,
-        speciesPlusId: number,
-        gbifId: number,
-        citesListings: array
-    }
-    </p>
-    
+    <pre>
+        <code id="viewSpecies">
+        </code>
+    </pre>
+    <script>
+        $(function() {
+            var viewSpecies = {
+                    "kingdomName": "string",
+                    "phylumName": "string",
+                    "className": "string",
+                    "orderName": "string",
+                    "familyName": "string",
+                    "genusName": "string",
+                    "scientificName": "string",
+                    "speciesId": "number",
+                    "speciesPlusId": "number",
+                    "gbifId": "number",
+                    "citesListings": "string"
+                };
+            $('#viewSpecies').html(library.json.prettyPrint(viewSpecies));
+        });
+    </script>
+
     <h3>Species common names</h3>
 
     <p><strong>Endpoint:</strong> <span class="url">/api/common_names/:speciesId</span></p>
@@ -71,16 +126,22 @@
         <li>speciesId: number</li>
     </ul>
     <p><strong>Returns:</strong></p>
-    <p>
-    [
-    {
-    id: number,
-    name: string,
-    language: string,
-    regions: string
-    }
-    ]
-    </p>
+    <pre>
+        <code id="commonNames">
+        </code>
+    </pre>
+    <script>
+        $(function() {
+            var commonNames = [{
+                "id": "number",
+                "name": "string",
+                "language": "string",
+                "region": "string",
+                "speciesId": "number"
+            }];
+            $('#commonNames').html(library.json.prettyPrint(commonNames));
+        });
+    </script>
 
     <h3>Species distribution</h3>
     <p><strong>Endpoint:</strong> <span class="url">/api/distribution/:speciesId</span></p>
@@ -89,13 +150,19 @@
         <li>speciesId: number</li>
     </ul>
     <p><strong>Returns:</strong></p>
-    <p>
-        [
-        {
-        id: number,
-        region: string,
-        }
-        ]
-    </p>
+    <pre>
+        <code id="distribution">
+        </code>
+    </pre>
+    <script>
+        $(function() {
+            var distribution = [{
+                "id": "number",
+                "region": "string",
+                "speciesId": "number"
+            }];
+            $('#distribution').html(library.json.prettyPrint(distribution));
+        });
+    </script>
 </body>
 </html>
