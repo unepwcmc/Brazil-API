@@ -12,6 +12,6 @@ public class TaxonMapper implements ResultSetMapper<Taxon> {
         return new Taxon(r.getInt("id"), r.getString("kingdom_name"),
                 r.getString("phylum_name"), r.getString("class_name"), r.getString("order_name"),
                 r.getString("family_name"), r.getString("scientific_name"), r.getInt("species_plus_id"),
-                r.getInt("gbif_id"));
+                r.getInt("gbif_id"), r.getString("cites_listing"));
     }
 }
