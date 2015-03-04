@@ -35,7 +35,7 @@ public class TaxaResource {
             myPerPage = perPage.get();
         }
         if(!page.isPresent()){
-            myPage = 1;
+            myPage = 0;
         } else {
             myPage = (page.get() - 1) * myPerPage;
         }
