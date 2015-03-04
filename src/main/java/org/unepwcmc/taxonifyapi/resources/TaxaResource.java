@@ -1,6 +1,7 @@
 package org.unepwcmc.taxonifyapi.resources;
 
 import com.google.common.base.Optional;
+import org.unepwcmc.taxonifyapi.dao.TaxaSearchResponse;
 import org.unepwcmc.taxonifyapi.dao.Taxon;
 import org.unepwcmc.taxonifyapi.dao.TaxonDAO;
 
@@ -22,7 +23,7 @@ public class TaxaResource {
 
 
     @GET
-    public List<Taxon> searchTaxa(@QueryParam("scientificName") Optional<String> scientificName,
+    public TaxaSearchResponse searchTaxa(@QueryParam("scientificName") Optional<String> scientificName,
                               @QueryParam("rank") Optional<String> rank,
                               @QueryParam("page") Optional<Integer> page,
                               @QueryParam("perPage") Optional<Integer> perPage) {
@@ -38,26 +39,45 @@ public class TaxaResource {
         } else {
             myPage = (page.get() - 1) * myPerPage;
         }
+        
+        int total;
+        List<Taxon> species;
        if(scientificName.isPresent()) {
            switch(rank.get().toLowerCase()) {
                case "kingdom":
-                   return dao.findByKingdomName(scientificName.get() + "%", myPage, myPerPage);
+                   species = dao.findByKingdomName(scientificName.get() + "%", myPage, myPerPage);
+                   total = dao.countForKingdomName(scientificName.get()+"%");
+                   break;
                case "phylum":
-                   return dao.findByPhylumName(scientificName.get() + "%", myPage, myPerPage);
+                   species = dao.findByPhylumName(scientificName.get() + "%", myPage, myPerPage);
+                   total = dao.countForPhylumName(scientificName.get()+"%");
+                   break;
                case "class":
-                   return dao.findByClassName(scientificName.get() + "%", myPage, myPerPage);
+                   species = dao.findByClassName(scientificName.get() + "%", myPage, myPerPage);
+                   total = dao.countForClassName(scientificName.get()+"%");
+                   break;
                case "order":
-                   return dao.findByOrderName(scientificName.get() + "%", myPage, myPerPage);
+                   species=  dao.findByOrderName(scientificName.get() + "%", myPage, myPerPage);
+                   total = dao.countForOrderName(scientificName.get()+"%");
+                   break;
                case "family":
-                   return dao.findByFamilyName(scientificName.get() + "%", myPage, myPerPage);
+                   species = dao.findByFamilyName(scientificName.get() + "%", myPage, myPerPage);
+                   total = dao.countForFamilyName(scientificName.get()+"%");
+                   break;
                case "genus":
-                   return dao.findByGenusName(scientificName.get() + "%", myPage, myPerPage);
+                   species = dao.findByGenusName(scientificName.get() + "%", myPage, myPerPage);
+                   total = dao.countForGenusName(scientificName.get()+"%");
+                   break;
                default:
-                  return dao.findByScientificName(scientificName.get() + "%", myPage, myPerPage);
-                   
+                  species = dao.findByScientificName(scientificName.get() + "%", myPage, myPerPage);
+                   total = dao.countForScientificName(scientificName.get()+"%");
+
            }
        } else {
-           return dao.findAll(myPage, myPerPage);
+           species = dao.findAll(myPage, myPerPage);
+           total = dao.countAll();
        }
+
+        return new TaxaSearchResponse(total, species);
     }
 }
