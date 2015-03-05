@@ -57,4 +57,4 @@ logging:
       currentLogFilename: ./logs/taxonify-api/http-prod.log
       archivedLogFilenamePattern: ./logs/taxonify-api/http-prod-%d.log
       archivedFileCount: 5
-    timeZone: UTC
+      timeZone: UTC
