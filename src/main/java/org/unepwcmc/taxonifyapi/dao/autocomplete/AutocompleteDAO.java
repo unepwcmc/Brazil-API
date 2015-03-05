@@ -10,6 +10,6 @@ import java.util.List;
 public interface AutocompleteDAO {
     
     @SqlQuery("SELECT id, scientific_name FROM taxon WHERE UPPER(taxon.scientific_name) LIKE UPPER(:query)" +
-            " ORDER BY scientific_name ASC LIMIT 20")
+            " ORDER BY scientific_name ASC LIMIT 9")
     List<Result> findByScientificName(@Bind("query") String query);
 }
