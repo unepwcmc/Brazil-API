@@ -240,6 +240,37 @@
         });
     </script>
     
+    <p><strong>Endpoint:</strong> <span class="url">/api/commonNames</span></p>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Body:</strong> (if id is present it will Update, otherwise creates new record.</p>
+    <pre><code id="commonBody"></code></pre>
+    <script>
+        $(function() {
+            var commonBody = [{
+                "id": 33425,
+                "name": "Ingá",
+                "language": "PORTUGUES",
+                "region": "Rio de Janeiro",
+                "speciesId": 50040
+            }];
+            $('#commonBody').html(library.json.prettyPrint(commonBody));
+        });
+    </script>
+    <p><strong>Returns:</strong> New record or updated record</p>
+    <pre><code id="commonResult"></code></pre>
+    <script>
+        $(function() {
+            var commonResult = [{
+                "id": 33425,
+                "name": "Ingá",
+                "language": "PORTUGUES",
+                "region": "Rio de Janeiro",
+                "speciesId": 50040
+            }];
+            $('#commonResult').html(library.json.prettyPrint(commonResult));
+        });
+    </script>
+    
     <hr>
 
     <h3>Species distribution</h3>
