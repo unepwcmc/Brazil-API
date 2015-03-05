@@ -13,4 +13,11 @@ public interface DistributionDAO {
             " FROM meta_data" +
             " WHERE taxon_id = :speciesId AND type = 'DISTRIBUTION'")
     List<Distribution> distributionFor(@Bind("speciesId") long speciesId);
+
+    @SqlQuery("UPDATE meta_data" +
+            " SET value = :region" +
+            " WHERE id = :id" +
+            " RETURNING value AS region, taxon_id AS speciesId, id")
+    Distribution updateDistribution(@Bind("region") String region,
+                                    @Bind("id") long id);
 }

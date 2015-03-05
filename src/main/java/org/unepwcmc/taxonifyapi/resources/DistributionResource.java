@@ -4,14 +4,12 @@ import io.dropwizard.jersey.params.LongParam;
 import org.unepwcmc.taxonifyapi.dao.distribution.Distribution;
 import org.unepwcmc.taxonifyapi.dao.distribution.DistributionDAO;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.validation.Valid;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/distribution/{speciesId}")
+@Path("/distribution")
 @Produces(MediaType.APPLICATION_JSON)
 public class DistributionResource {
     private final DistributionDAO dao;
@@ -21,7 +19,13 @@ public class DistributionResource {
     }
 
     @GET
-    public List<Distribution> getTaxon(@PathParam("speciesId") LongParam speciesId) {
+    @Path("/{speciesId}")
+    public List<Distribution> getDistributionFor(@PathParam("speciesId") LongParam speciesId) {
         return dao.distributionFor(speciesId.get());
+    }
+    
+    @POST
+    public Distribution updateDistribution(@Valid Distribution distribution) {
+       return dao.updateDistribution(distribution.getRegion(), distribution.getId());
     }
 }
