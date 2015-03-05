@@ -45,3 +45,16 @@ server:
   adminConnectors:
     - type: http
       port: 8383
+logging:
+  level: DEBUG
+  appenders:
+    - type: console
+      threshold: WARN
+      target: stderr
+
+    - type: file
+      threshold: INFO
+      currentLogFilename: ./logs/taxonify-api/http-prod.log
+      archivedLogFilenamePattern: ./logs/taxonify-api/http-prod-%d.log
+      archivedFileCount: 5
+    timeZone: UTC
