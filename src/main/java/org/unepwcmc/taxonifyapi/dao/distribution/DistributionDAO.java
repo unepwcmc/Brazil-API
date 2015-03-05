@@ -20,4 +20,9 @@ public interface DistributionDAO {
             " RETURNING value AS region, taxon_id AS speciesId, id")
     Distribution updateDistribution(@Bind("region") String region,
                                     @Bind("id") long id);
+
+    @SqlQuery("INSERT INTO meta_data(version, taxon_id, value, type)" +
+            " VALUES(0, :speciesId, :region, 'DISTRIBUTION')" +
+            " RETURNING value AS region, taxon_id AS speciesId, id")
+    Distribution addDistribution(@Bind("region") String region, @Bind("speciesId") int speciesId);
 }

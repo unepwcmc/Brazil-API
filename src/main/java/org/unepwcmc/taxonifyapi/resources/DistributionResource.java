@@ -26,6 +26,8 @@ public class DistributionResource {
     
     @POST
     public Distribution updateDistribution(@Valid Distribution distribution) {
-       return dao.updateDistribution(distribution.getRegion(), distribution.getId());
+       return distribution.getId() != 0 ?
+               dao.updateDistribution(distribution.getRegion(), distribution.getId()) :
+               dao.addDistribution(distribution.getRegion(), distribution.getSpeciesId());
     }
 }
