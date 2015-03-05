@@ -280,5 +280,34 @@
             $('#distributionExample').html(library.json.prettyPrint(distributionExample));
         });
     </script>
+    
+    
+    <p><strong>Endpoint:</strong> <span class="url">/api/distribution</span></p>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Body:</strong> (if id is present it will Update, otherwise creates new record.</p>
+    <pre><code id="distributionBody"></code></pre>
+    <script>
+        $(function() {
+            var distributionBody = [{
+                "id": 33425,
+                "region": "Rio de Janeiro",
+                "speciesId": 50040
+            }];
+            $('#distributionBody').html(library.json.prettyPrint(distributionBody));
+        });
+    </script>
+    <p><strong>Returns:</strong> New record or updated record</p>
+    <pre><code id="distributionResult"></code></pre>
+    <script>
+        $(function() {
+            var distributionResult =
+                    {
+                        "id": 33425,
+                        "region": "Rio de Janeiro",
+                        "speciesId": 50040
+                    };
+            $('#distributionResult').html(library.json.prettyPrint(distributionResult));
+        });
+    </script>
 </body>
 </html>
