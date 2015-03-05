@@ -1,14 +1,17 @@
 package org.unepwcmc.taxonifyapi.dao.common_name;
 
 import javax.annotation.concurrent.Immutable;
+import javax.validation.constraints.NotNull;
 
 @Immutable
 public class CommonName {
-    private final int id;
-    private final String name;
-    private final String language;
-    private final String region;
-    private final int speciesId;
+    private int id;
+    @NotNull
+    private String name;
+    private String language;
+    private String region;
+    @NotNull
+    private int speciesId;
     
     public CommonName(int id, String name, String language, String region, int speciesId) {
         this.id = id;
@@ -16,6 +19,9 @@ public class CommonName {
         this.language = language;
         this.region = region;
         this.speciesId = speciesId;
+    }
+    
+    public CommonName() {
     }
     
     public int getId() {
