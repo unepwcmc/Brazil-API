@@ -9,9 +9,8 @@ import java.util.List;
 @RegisterMapper(DistributionMapper.class)
 public interface DistributionDAO {
 
-    @SqlQuery("SELECT distribution.id AS id, geo_entity.name AS region, taxon_id AS speciesId" +
-            " FROM distribution" +
-            " INNER JOIN geo_entity ON geo_entity_id = geo_entity.id" +
-            " WHERE taxon_id = :speciesId")
+    @SqlQuery("SELECT meta_data.id AS id, meta_data.value AS region, taxon_id AS speciesId" +
+            " FROM meta_data" +
+            " WHERE taxon_id = :speciesId AND type = 'DISTRIBUTION'")
     List<Distribution> distributionFor(@Bind("speciesId") long speciesId);
 }
