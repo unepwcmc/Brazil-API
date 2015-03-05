@@ -18,11 +18,9 @@ public class TaxonResource {
 
     @GET
     public Taxon getTaxon(@PathParam("speciesId") LongParam speciesId) {
-        return findSafely(speciesId.get());
-    }
-    
-    private Taxon findSafely(long speciesId) {
-        Taxon taxon = dao.findById(speciesId);
+        Taxon taxon = dao.findById(speciesId.get());
+        taxon.setCommonNames(dao.getCommonNames(speciesId.get()));
+        taxon.setDistribution(dao.getDistribution(speciesId.get()));
         return taxon;
     }
 }

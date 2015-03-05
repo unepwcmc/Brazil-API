@@ -1,6 +1,10 @@
 package org.unepwcmc.taxonifyapi.dao.taxon;
 
+import org.unepwcmc.taxonifyapi.dao.common_name.CommonName;
+import org.unepwcmc.taxonifyapi.dao.distribution.Distribution;
+
 import javax.annotation.concurrent.Immutable;
+import java.util.List;
 
 @Immutable
 public class Taxon {
@@ -16,6 +20,8 @@ public class Taxon {
     private final int gbifId;
     private final String citesListing;
     private final String description;
+    private List<CommonName> commonNames;
+    private List<Distribution> distribution;
 
     public Taxon(int speciesId, String kingdomName, String phylumName,
                  String className, String orderName, String familyName, String scientificName, 
@@ -57,4 +63,19 @@ public class Taxon {
     }
     public String getCitesListing() { return citesListing; }
     public String getDescription() { return  description; }
+    
+    public List<CommonName> getCommonNames() {
+        return commonNames;
+    }
+    public List<Distribution> getDistribution() {
+        return distribution;
+    }
+    
+    public void setCommonNames(List<CommonName> commonNames) {
+        this.commonNames = commonNames;
+    }
+    
+    public void setDistribution(List<Distribution> distribution) {
+        this.distribution = distribution;
+    }
 }
