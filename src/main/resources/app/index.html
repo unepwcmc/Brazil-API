@@ -54,6 +54,7 @@
     
     <h2>Autocomplete</h2>
     <p><strong>Endpoint:</strong> <span class="url">/api/autocomplete?query=</span></p>
+    <p><strong>Method:</strong> GET</p>
     <p><strong>Params:</strong></p>
     <ul>
         <li>query: string</li>
@@ -86,6 +87,7 @@
     
     <h2>Search</h2>
     <p><strong>Endpoint:</strong> <span class="url">/api/taxa?scientificName=&page=&perPage=</span></p>
+    <p><strong>Method</strong> GET</p>
     <p><strong>Params:</strong></p>
     <ul>
         <li>scientificName: string</li>
@@ -117,10 +119,7 @@
         });
     </script>
     <p><strong>Example Response:</strong></p>
-    <pre>
-        <code id="searchExample">
-        </code>
-    </pre>
+    <pre><code id="searchExample"></code></pre>
     <script>
         $(function() {
             var searchExample =
@@ -148,6 +147,7 @@
     <h2>View Species page</h2>
     <h3>Species taxonomic data</h3>
     <p><strong>Endpoint:</strong> <span class="url">/api/taxa/:speciesId</span></p>
+    <p><strong>Method:</strong> GET</p>
     <p><strong>Params:</strong></p>
     <ul>
         <li>speciesId: number</li>
@@ -200,6 +200,7 @@
     <h3>Species common names</h3>
 
     <p><strong>Endpoint:</strong> <span class="url">/api/commonNames/:speciesId</span></p>
+    <p><strong>Method:</strong> GET</p>
     <p><strong>Params:</strong></p>
     <ul>
         <li>speciesId: number</li>
@@ -243,6 +244,7 @@
 
     <h3>Species distribution</h3>
     <p><strong>Endpoint:</strong> <span class="url">/api/distribution/:speciesId</span></p>
+    <p><strong>Method:</strong> GET</p>
     <p><strong>Params:</strong></p>
     <ul>
         <li>speciesId: number</li>
