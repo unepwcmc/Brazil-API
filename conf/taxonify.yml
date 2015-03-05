@@ -49,8 +49,8 @@ logging:
   level: DEBUG
   appenders:
     - type: console
-      threshold: WARN
-      target: stderr
+      threshold: INFO
+      target: stdout
 
     - type: file
       threshold: INFO
