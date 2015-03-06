@@ -51,7 +51,7 @@
     <h1>Taxonify API</h1>
 
     The following endpoints are available.
-    
+
     <h2>Autocomplete</h2>
     <p><strong>Endpoint:</strong> <span class="url">/api/autocomplete?query=</span></p>
     <p><strong>Method:</strong> GET</p>
@@ -84,7 +84,7 @@
     </script>
 
     <hr>
-    
+
     <h2>Search</h2>
     <p><strong>Endpoint:</strong> <span class="url">/api/taxa?scientificName=&page=&perPage=</span></p>
     <p><strong>Method:</strong> GET</p>
@@ -141,9 +141,9 @@
             $('#searchExample').html(library.json.prettyPrint(searchExample));
         });
     </script>
-    
+
     <hr>
-    
+
     <h2>View Species page</h2>
     <h3>Species taxonomic data</h3>
     <p><strong>Endpoint:</strong> <span class="url">/api/taxa/:speciesId</span></p>
@@ -172,7 +172,7 @@
             $('#viewSpecies').html(library.json.prettyPrint(viewSpecies));
         });
     </script>
-    
+
     <p><strong>Example Response:</strong></p>
     <pre><code id="viewExample"></code></pre>
     <script>
@@ -194,7 +194,7 @@
             $('#viewExample').html(library.json.prettyPrint(viewExample));
         });
     </script>
-    
+
     <hr>
 
     <h3>Species common names</h3>
@@ -219,9 +219,9 @@
             $('#commonNames').html(library.json.prettyPrint(commonNames));
         });
     </script>
-    
+
     <p><strong>Example Response:</strong></p>
-    
+
     <pre><code id="commonExample"></code></pre>
     <script>
         $(function() {
@@ -239,7 +239,7 @@
             $('#commonExample').html(library.json.prettyPrint(commonExample));
         });
     </script>
-    
+
     <p><strong>Endpoint:</strong> <span class="url">/api/commonNames</span></p>
     <p><strong>Method:</strong> POST</p>
     <p><strong>Body:</strong> (if id is present it will Update, otherwise creates new record.</p>
@@ -270,7 +270,7 @@
             $('#commonResult').html(library.json.prettyPrint(commonResult));
         });
     </script>
-    
+
     <hr>
 
     <h3>Species distribution</h3>
@@ -292,7 +292,7 @@
             $('#distribution').html(library.json.prettyPrint(distribution));
         });
     </script>
-    
+
     <p><strong>Example Response:</strong></p>
 
     <pre><code id="distributionExample"></code></pre>
@@ -311,8 +311,8 @@
             $('#distributionExample').html(library.json.prettyPrint(distributionExample));
         });
     </script>
-    
-    
+
+
     <p><strong>Endpoint:</strong> <span class="url">/api/distribution</span></p>
     <p><strong>Method:</strong> POST</p>
     <p><strong>Body:</strong> (if id is present it will Update, otherwise creates new record.</p>
