@@ -4,6 +4,7 @@ import io.dropwizard.jersey.params.LongParam;
 import org.unepwcmc.taxonifyapi.dao.taxon.Taxon;
 import org.unepwcmc.taxonifyapi.dao.taxon.TaxonDAO;
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -22,5 +23,11 @@ public class TaxonResource {
         taxon.setCommonNames(dao.getCommonNames(speciesId.get()));
         taxon.setDistribution(dao.getDistribution(speciesId.get()));
         return taxon;
+    }
+    
+    @POST
+    public Taxon updateTaxon(@PathParam("speciesId") LongParam speciesId,
+                             @Valid Taxon taxon) {
+        return dao.updateTaxon(speciesId.get(), taxon.getDescription());
     }
 }

@@ -4,22 +4,24 @@ import org.unepwcmc.taxonifyapi.dao.common_name.CommonName;
 import org.unepwcmc.taxonifyapi.dao.distribution.Distribution;
 
 import javax.annotation.concurrent.Immutable;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Immutable
 public class Taxon {
 
-    private final String scientificName;
-    private final String kingdomName;
-    private final String phylumName;
-    private final String className;
-    private final String orderName;
-    private final String familyName;
-    private final int speciesId;
-    private final int speciesPlusId;
-    private final int gbifId;
-    private final String citesListing;
-    private final String description;
+    private String scientificName;
+    private String kingdomName;
+    private String phylumName;
+    private String className;
+    private String orderName;
+    private String familyName;
+    @NotNull
+    private int speciesId;
+    private int speciesPlusId;
+    private int gbifId;
+    private String citesListing;
+    private String description;
     private List<CommonName> commonNames;
     private List<Distribution> distribution;
 
@@ -38,6 +40,8 @@ public class Taxon {
         this.citesListing = citesListing;
         this.description = description;
     }
+    
+    public Taxon() {}
 
     public int getSpeciesId() { return speciesId; }
     public int getSpeciesPlusId() { return speciesPlusId; }
