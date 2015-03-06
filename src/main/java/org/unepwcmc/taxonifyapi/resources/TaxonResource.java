@@ -29,6 +29,9 @@ public class TaxonResource {
     @Consumes("application/json")
     public Taxon updateTaxon(@PathParam("speciesId") LongParam speciesId,
                              @Valid Taxon taxon) {
-        return dao.updateTaxon(speciesId.get(), taxon.getDescription());
+        taxon = dao.updateTaxon(speciesId.get(), taxon.getDescription());
+        taxon.setCommonNames(dao.getCommonNames(speciesId.get()));
+        taxon.setDistribution(dao.getDistribution(speciesId.get()));
+        return taxon;
     }
 }
