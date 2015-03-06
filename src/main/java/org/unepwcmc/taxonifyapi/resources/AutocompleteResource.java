@@ -25,6 +25,6 @@ public class AutocompleteResource {
     @GET
     @CacheControl(maxAge=5, maxAgeUnit = TimeUnit.DAYS)
     public List<Result> getTaxon(@QueryParam("query") Optional<String> query) {
-        return query.isPresent() ? dao.findByScientificName(query.get()+"%") : null;
+        return query.isPresent() ? dao.findByScientificName(query.get().trim()+"%") : null;
     }
 }

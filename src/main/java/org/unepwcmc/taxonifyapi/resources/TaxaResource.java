@@ -46,34 +46,35 @@ public class TaxaResource {
         List<Taxa> species;
        if(scientificName.isPresent()) {
            String myRank = rank.isPresent() ? rank.get().toLowerCase() : "";
+           String query = scientificName.get().trim();
            switch(myRank) {
                case "kingdom":
-                   species = dao.findByKingdomName(scientificName.get() + "%", myPage, myPerPage);
-                   total = dao.countForKingdomName(scientificName.get()+"%");
+                   species = dao.findByKingdomName(query + "%", myPage, myPerPage);
+                   total = dao.countForKingdomName(query+"%");
                    break;
                case "phylum":
-                   species = dao.findByPhylumName(scientificName.get() + "%", myPage, myPerPage);
-                   total = dao.countForPhylumName(scientificName.get()+"%");
+                   species = dao.findByPhylumName(query + "%", myPage, myPerPage);
+                   total = dao.countForPhylumName(query+"%");
                    break;
                case "class":
-                   species = dao.findByClassName(scientificName.get() + "%", myPage, myPerPage);
-                   total = dao.countForClassName(scientificName.get()+"%");
+                   species = dao.findByClassName(query + "%", myPage, myPerPage);
+                   total = dao.countForClassName(query+"%");
                    break;
                case "order":
-                   species=  dao.findByOrderName(scientificName.get() + "%", myPage, myPerPage);
-                   total = dao.countForOrderName(scientificName.get()+"%");
+                   species=  dao.findByOrderName(query + "%", myPage, myPerPage);
+                   total = dao.countForOrderName(query+"%");
                    break;
                case "family":
-                   species = dao.findByFamilyName(scientificName.get() + "%", myPage, myPerPage);
-                   total = dao.countForFamilyName(scientificName.get()+"%");
+                   species = dao.findByFamilyName(query + "%", myPage, myPerPage);
+                   total = dao.countForFamilyName(query+"%");
                    break;
                case "genus":
-                   species = dao.findByGenusName(scientificName.get() + "%", myPage, myPerPage);
-                   total = dao.countForGenusName(scientificName.get()+"%");
+                   species = dao.findByGenusName(query + "%", myPage, myPerPage);
+                   total = dao.countForGenusName(query+"%");
                    break;
                default:
-                  species = dao.findByScientificName(scientificName.get() + "%", myPage, myPerPage);
-                   total = dao.countForScientificName(scientificName.get()+"%");
+                  species = dao.findByScientificName(query + "%", myPage, myPerPage);
+                   total = dao.countForScientificName(query+"%");
 
            }
        } else {
