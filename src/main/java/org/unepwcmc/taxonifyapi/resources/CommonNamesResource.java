@@ -25,8 +25,9 @@ public class CommonNamesResource {
         return dao.commonNamesFor(speciesId.get());
     }
     
-    @POST
-    public CommonName updateDistribution(@Valid CommonName commonName) {
+    @PUT
+    @Consumes("application/json")
+    public CommonName updateCommonName(@Valid CommonName commonName) {
         return commonName.getId() != 0 ?
                 dao.updateCommonName(commonName.getName(), commonName.getId()) :
                 dao.addCommonName(commonName.getName(), commonName.getSpeciesId());

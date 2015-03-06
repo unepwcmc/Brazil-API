@@ -24,7 +24,8 @@ public class DistributionResource {
         return dao.distributionFor(speciesId.get());
     }
     
-    @POST
+    @PUT
+    @Consumes("application/json")
     public Distribution updateDistribution(@Valid Distribution distribution) {
        return distribution.getId() != 0 ?
                dao.updateDistribution(distribution.getRegion(), distribution.getId()) :
