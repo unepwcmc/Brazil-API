@@ -167,8 +167,21 @@
                     "speciesId": "number",
                     "speciesPlusId": "number",
                     "gbifId": "number",
-                    "citesListings": "string"
-                };
+                    "citesListings": "string",
+                    "description": "string",
+                    "commonNames": [{
+                      "id": "number",
+                      "name": "string",
+                      "language": "string",
+                      "region": "string",
+                      "speciesId": "number"
+                    }],
+                    "distribution": [{
+                      "id": "number",
+                      "region": "string",
+                      "speciesId": "number"
+                    }]
+                  };
             $('#viewSpecies').html(library.json.prettyPrint(viewSpecies));
         });
     </script>
@@ -188,10 +201,57 @@
                 "speciesId": 73103,
                 "speciesPlusId": 66097,
                 "gbifId": 2840008,
-                "citesListing": "II"
-
+                "citesListing": "II",
+                "description": "A description of this species",
+                "commonNames": [{
+                    "id": 3057,
+                    "name": "Ingá-fava",
+                    "language": "PORTUGUES",
+                    "region": "Acre",
+                    "speciesId": 50040
+                }],
+                "distribution": [{
+                    "id": 33425,
+                    "region": "Acre",
+                    "speciesId": 50040
+                }]
             };
             $('#viewExample').html(library.json.prettyPrint(viewExample));
+        });
+    </script>
+
+    <p><strong>Endpoint:</strong> <span class="url">/api/taxa/:speciesId</span></p>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Body:</strong></p>
+    <pre><code id="speciesBody"></code></pre>
+    <script>
+        $(function() {
+            var speciesBody = {
+                "speciesId": 50040,
+                "description": "A description"
+            };
+            $('#speciesBody').html(library.json.prettyPrint(speciesBody));
+        });
+    </script>
+    <p><strong>Returns:</strong> Record with updated description</p>
+    <pre><code id="viewEdited"></code></pre>
+    <script>
+        $(function() {
+            var viewEdited =
+            {
+                "scientificName": "Acianthera bragae",
+                "kingdomName": "Plants",
+                "phylumName": null,
+                "className": null,
+                "orderName": null,
+                "familyName": "Orchidaceae",
+                "speciesId": 73103,
+                "speciesPlusId": 66097,
+                "gbifId": 2840008,
+                "citesListing": "II",
+                "description": "A description"
+            };
+            $('#viewEdited').html(library.json.prettyPrint(viewEdited));
         });
     </script>
 
