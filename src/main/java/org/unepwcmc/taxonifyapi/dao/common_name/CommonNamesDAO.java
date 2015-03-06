@@ -15,16 +15,19 @@ public interface CommonNamesDAO {
     List<CommonName> commonNamesFor(@Bind("speciesId") long speciesId);
 
     @SqlQuery("UPDATE meta_data" +
-            " SET value = :name" +
+            " SET value = :name, data = CAST('{\"language\": \"' || :language || '\"," +
+            " \"region\": \"' || :region || '\"}' AS JSON)" +
             " WHERE id = :id" +
             " RETURNING value AS name, taxon_id AS speciesId, id, data->>'language' AS language," +
             " data->>'region' AS region")
-    CommonName updateCommonName(@Bind("name") String name,
-                                    @Bind("id") long id);
+    CommonName updateCommonName(@Bind("name") String name, @Bind("id") long id,
+                                @Bind("language") String language, @Bind("region") String region);
 
-    @SqlQuery("INSERT INTO meta_data(version, taxon_id, value, type)" +
-            " VALUES(0, :speciesId, :name, 'COMMON_NAME')" +
+    @SqlQuery("INSERT INTO meta_data(version, taxon_id, value, type, data)" +
+            " VALUES(0, :speciesId, :name, 'COMMON_NAME'," +
+            " CAST('{\"language\": \"' || :language || '\", \"region\": \"' || :region || '\"}' AS JSON))" +
             " RETURNING value AS name, taxon_id AS speciesId, id," +
             " data->>'language' AS language, data->>'region' AS region")
-    CommonName addCommonName(@Bind("name") String name, @Bind("speciesId") int speciesId);
+    CommonName addCommonName(@Bind("name") String name, @Bind("speciesId") int speciesId,
+                             @Bind("language") String language, @Bind("region") String region);
 }

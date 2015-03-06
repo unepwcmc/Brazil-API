@@ -21,8 +21,7 @@ public class CommonName {
         this.speciesId = speciesId;
     }
     
-    public CommonName() {
-    }
+    public CommonName() {}
     
     public int getId() {
         return id;

@@ -29,7 +29,9 @@ public class CommonNamesResource {
     @Consumes("application/json")
     public CommonName updateCommonName(@Valid CommonName commonName) {
         return commonName.getId() != 0 ?
-                dao.updateCommonName(commonName.getName(), commonName.getId()) :
-                dao.addCommonName(commonName.getName(), commonName.getSpeciesId());
+                dao.updateCommonName(commonName.getName(), commonName.getId(),
+                        commonName.getLanguage(), commonName.getRegion()) :
+                dao.addCommonName(commonName.getName(), commonName.getSpeciesId(),
+                        commonName.getLanguage(), commonName.getRegion());
     }
 }
