@@ -25,7 +25,8 @@ public class TaxonResource {
         return taxon;
     }
     
-    @POST
+    @PUT
+    @Consumes("application/json")
     public Taxon updateTaxon(@PathParam("speciesId") LongParam speciesId,
                              @Valid Taxon taxon) {
         return dao.updateTaxon(speciesId.get(), taxon.getDescription());

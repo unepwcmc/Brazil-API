@@ -1,5 +1,6 @@
 package org.unepwcmc.taxonifyapi.dao.taxon;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.unepwcmc.taxonifyapi.dao.common_name.CommonName;
 import org.unepwcmc.taxonifyapi.dao.distribution.Distribution;
 
@@ -20,6 +21,8 @@ public class Taxon {
     private int speciesId;
     private int speciesPlusId;
     private int gbifId;
+    @JsonIgnore
+    private String id;
     private String citesListing;
     private String description;
     private List<CommonName> commonNames;
@@ -43,6 +46,7 @@ public class Taxon {
     
     public Taxon() {}
 
+    public String getId() { return id; }
     public int getSpeciesId() { return speciesId; }
     public int getSpeciesPlusId() { return speciesPlusId; }
     public int getGbifId() { return gbifId; }
