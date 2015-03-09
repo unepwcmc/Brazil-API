@@ -9,7 +9,7 @@ import java.util.List;
 @RegisterMapper(ResultMapper.class)
 public interface AutocompleteDAO {
     
-    @SqlQuery("SELECT id, scientific_name FROM taxon WHERE UPPER(taxon.scientific_name) LIKE UPPER(:query)" +
+    @SqlQuery("SELECT id, scientific_name FROM taxon_search_view WHERE UPPER(taxon_search_view.scientific_name) LIKE UPPER(:query)" +
             " ORDER BY scientific_name ASC LIMIT 9")
     List<Result> findByScientificName(@Bind("query") String query);
 }
