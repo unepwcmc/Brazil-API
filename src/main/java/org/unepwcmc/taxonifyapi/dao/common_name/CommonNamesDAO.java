@@ -30,4 +30,7 @@ public interface CommonNamesDAO {
             " data->>'language' AS language, data->>'region' AS region")
     CommonName addCommonName(@Bind("name") String name, @Bind("speciesId") int speciesId,
                              @Bind("language") String language, @Bind("region") String region);
+
+    @SqlQuery("DELETE FROM meta_data WHERE id = :commonNameId AND type = 'COMMON_NAME'")
+    Boolean deleteCommonName(@Bind("commonNameId") long commonNameId);
 }

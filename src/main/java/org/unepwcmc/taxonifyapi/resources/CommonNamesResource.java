@@ -34,4 +34,11 @@ public class CommonNamesResource {
                 dao.addCommonName(commonName.getName(), commonName.getSpeciesId(),
                         commonName.getLanguage(), commonName.getRegion());
     }
+    
+    @DELETE
+    @Path("/{commonNameId}")
+    @Consumes("application/json")
+    public void deleteCommonName(@PathParam("commonNameId") LongParam commonNameId) {
+        dao.deleteCommonName(commonNameId.get());
+    }
 }
