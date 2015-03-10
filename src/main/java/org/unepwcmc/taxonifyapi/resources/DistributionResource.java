@@ -31,4 +31,10 @@ public class DistributionResource {
                dao.updateDistribution(distribution.getRegion(), distribution.getId()) :
                dao.addDistribution(distribution.getRegion(), distribution.getSpeciesId());
     }
+    @Path("/{distributionId}")
+    @DELETE
+    @Consumes("application/json")
+    public void deleteCommonName(@PathParam("distributionId") LongParam distributionId) {
+        dao.deleteDistribution(distributionId.get());
+    }
 }

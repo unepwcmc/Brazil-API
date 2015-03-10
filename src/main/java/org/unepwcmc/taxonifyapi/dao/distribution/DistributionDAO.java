@@ -2,6 +2,7 @@ package org.unepwcmc.taxonifyapi.dao.distribution;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import java.util.List;
@@ -25,4 +26,7 @@ public interface DistributionDAO {
             " VALUES(0, :speciesId, :region, 'DISTRIBUTION')" +
             " RETURNING value AS region, taxon_id AS speciesId, id")
     Distribution addDistribution(@Bind("region") String region, @Bind("speciesId") int speciesId);
+
+    @SqlUpdate("DELETE FROM meta_data WHERE id = :distributionId AND type = 'DISTRIBUTION'")
+    void deleteDistribution(@Bind("distributionId") long distributionId);
 }
